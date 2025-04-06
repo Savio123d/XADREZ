@@ -1,16 +1,137 @@
 <!DOCTYPE html>
-<html lang="pt">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xadrez</title>
-    <link rel="stylesheet" href="CSS/style.css">
+  <meta charset="UTF-8">
+  <title>Tabuleiro de Xadrez</title>
+  <style>
+    .tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+      width: 480px;
+      border: 2px solid #333;
+    }
 
+    .casa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-family: Arial, sans-serif;
+    }
+
+    .clara {
+      background-color: #f0d9b5;
+    }
+
+    .escura {
+      background-color: #b58863;
+    }
+  </style>
+</head>
 <body>
-    <div class="tabuleiro" id="board">
-        <script src="JS/script.js"> </script>
-    </div>
-</body>
+  <h2>Tabuleiro de Xadrez</h2>
+  <div class="tabuleiro">
+    
+    <div class="casa escura">♜</div>
+    <div class="casa clara">♞</div>
+    <div class="casa escura">♝</div>
+    <div class="casa clara">♛</div>
+    <div class="casa escura">♚</div>
+    <div class="casa clara">♝</div>
+    <div class="casa escura">♞</div>
+    <div class="casa clara">♜</div>
 
+  
+    <div class="casa clara">♟</div>
+    <div class="casa escura">♟</div>
+    <div class="casa clara">♟</div>
+    <div class="casa escura">♟</div>
+    <div class="casa clara">♟</div>
+    <div class="casa escura">♟</div>
+    <div class="casa clara">♟</div>
+    <div class="casa escura">♟</div>
+
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+   
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+    <div class="casa clara"></div>
+    <div class="casa escura"></div>
+
+    <div class="casa escura">♙</div>
+    <div class="casa clara">♙</div>
+    <div class="casa escura">♙</div>
+    <div class="casa clara">♙</div>
+    <div class="casa escura">♙</div>
+    <div class="casa clara">♙</div>
+    <div class="casa escura">♙</div>
+    <div class="casa clara">♙</div>
+
+    <div class="casa clara">♖</div>
+    <div class="casa escura">♘</div>
+    <div class="casa clara">♗</div>
+    <div class="casa escura">♕</div>
+    <div class="casa clara">♔</div>
+    <div class="casa escura">♗</div>
+    <div class="casa clara">♘</div>
+    <div class="casa escura">♖</div>
+  </div>
+  <script>
+    function moverPecaAleatoriamente() {
+      const casas = document.querySelectorAll('.tabuleiro .casa');
+      let peca = null;
+  
+      casas.forEach((casa, index) => {
+        if (casa.textContent === '♖') {
+          peca = { casa, index };
+        }
+      });
+  
+      if (peca) {
+       
+        peca.casa.textContent = '';
+  
+        let novaCasa;
+        do {
+          const indiceAleatorio = Math.floor(Math.random() * casas.length);
+          novaCasa = casas[indiceAleatorio];
+        } while (novaCasa.textContent !== '');
+  
+        novaCasa.textContent = '♖';
+      }
+    }
+    setInterval(moverPecaAleatoriamente, 2000);
+  </script>
+  
+</body>
 </html>
